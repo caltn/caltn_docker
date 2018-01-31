@@ -1,4 +1,1 @@
-FROM node:alpine
-
-RUN apt-get upgrade\
-    && apt-get update
+FROM nginx:1.13.8-alpine

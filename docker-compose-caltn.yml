@@ -1,14 +1,14 @@
 version: '3'
 services:
   nginx:
-    image: nginx:latest
+    build: ./nginx/
     ports:
       - "443:443"
       - "80:80"
       - "81:81"
       - "90:90"
     networks:
-      - test1
+      - mynetwork
 
     volumes:
       - ./www/:/var/www/html/:rw
@@ -16,7 +16,7 @@ services:
       - ./conf/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./log/nginx/:/var/log/nginx/:rw
     networks:
-      - test1
+      - mynetwork
     depends_on:
       - php72
       - php56
@@ -34,7 +34,7 @@ services:
       - ./conf/php/php72/php-fpm.d/www.conf:/usr/local/etc/php-fpm.d/www.conf:rw
       - ./log/php-fpm/php72/:/var/log/php-fpm/:rw
     networks:
-      - test1
+      - mynetwork
     depends_on:
       - mysql
       - redis
@@ -51,13 +51,13 @@ services:
       - ./conf/php/php56/php-fpm.d/www.conf:/usr/local/etc/php-fpm.d/www.conf:rw
       - ./log/php-fpm/php56/:/var/log/php-fpm/:rw
     networks:
-      - test1
+      - mynetwork
     depends_on:
       - mysql
       - redis
   
   mysql:
-    image: mysql:latest
+    image: mysql:5.7.21
     ports:
       - "3306:3306"
     volumes:
@@ -67,14 +67,14 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: "123456"
     networks:
-      - test1
+      - mynetwork
   
   redis:
     image: redis:latest
     ports:
       - "6379:6379"
     networks:
-      - test1
+      - mynetwork
   
   nodejs:
     build: ./nodejs/
@@ -83,8 +83,8 @@ services:
     volumes:
       - ./www/myapp:/home/myapp:rw
     networks:
-      - test1
+      - mynetwork
       
 networks:
-    test1:
+    mynetwork:
       driver: bridge
