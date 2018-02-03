@@ -44,15 +44,15 @@ We need not change any other files, such as nginx config file or php.ini, everyt
 > Notice: We can only start one php version, for they using same port. We must STOP the running project then START the other one.
 
 ### HTTPS and HTTP/2
-Default demo include 2 sites:
+Default demo include 3 sites:
 * http://www.site1.com (same with http://localhost)
-* https://www.site2.com
+* https://www.site2.com (same with http://localhost:81)
+* https://www.nodejs.com (same with http://localhost:90)
 
 To preview them, add 2 lines to your hosts file (at `/etc/hosts` on Linux and `C:\Windows\System32\drivers\etc\hosts` on Windows):
 ```
 127.0.0.1 www.site1.com
 127.0.0.1 www.site2.com
+127.0.0.1 www.nodejs.com
 ```
 Then you can visit from browser.
-
-
