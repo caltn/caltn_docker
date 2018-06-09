@@ -1,0 +1,11 @@
+.history
+
+log/mysql/
+ 
+log/nginx/wwwlog/
+log/nginx/*.log
+ 
+log/php-fpm/php56/
+log/php-fpm/php72/
+ 
+www/myapp/node_modules/
