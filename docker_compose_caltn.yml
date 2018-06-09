@@ -57,7 +57,7 @@ services:
       - redis
   
   mysql:
-    image: mysql:5.7.21
+    image: mysql:5.7.22
     ports:
       - "3306:3306"
     volumes:
@@ -78,7 +78,6 @@ services:
   
   nodejs:
     build: ./nodejs/
-    # ports:
     #   - "3000:3000"
     volumes:
       - ./www/myapp:/home/myapp:rw
