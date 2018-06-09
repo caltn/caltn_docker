@@ -1,5 +1,4 @@
 # caltn_docker
-This is copy from other and edit by me
 
 Docker deploying Nginx MySQL PHP7 in one key, support full feature functions.
 
@@ -26,7 +25,7 @@ Docker deploying Nginx MySQL PHP7 in one key, support full feature functions.
     ```
 4. Start docker containers:
     ```
-    $ docker-compose -f docker-compose-caltn.yml up -d --build
+    $ docker-compose -f docker_compose_caltn.yml up -d --build
     ```
     You may need use `sudo` before this command in Linux.
 5. Go to your browser and type `http://127.0.0.1`, you will see php72:
@@ -56,3 +55,6 @@ To preview them, add 2 lines to your hosts file (at `/etc/hosts` on Linux and `C
 127.0.0.1 www.nodejs.com
 ```
 Then you can visit from browser.
+
+### Reference resources
+- [yeszao/dnmp](https://github.com/yeszao/dnmp)
