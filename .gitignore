@@ -1,13 +1,18 @@
-.history
+/.history
 
-mysql/
+/mysql/*
+!/mysql/.gitkeep
 
-log/mysql/
+/log/mysql/*
+!/log/mysql/.gitkeep
  
-log/nginx/wwwlog/
-log/nginx/*.log
+/log/nginx/wwwlog/*
+!/log/nginx/wwwlog/.gitkeep
+/log/nginx/*.log
  
-log/php-fpm/php56/
-log/php-fpm/php72/
+/log/php-fpm/php56/*
+!/log/php-fpm/php56/.gitkeep
+/log/php-fpm/php72/*
+!/log/php-fpm/php72/.gitkeep
  
-www/myapp/node_modules/
+/www/myapp/node_modules
