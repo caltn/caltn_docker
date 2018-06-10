@@ -1,13 +1,13 @@
-.history
+/.history
 
-mysql/
+/mysql/*
 
-log/mysql/
+/log/mysql/*
  
-log/nginx/wwwlog/
-log/nginx/*.log
+/log/nginx/wwwlog/*
+/log/nginx/*.log
  
-log/php-fpm/php56/
-log/php-fpm/php72/
+/log/php-fpm/php56/*
+/log/php-fpm/php72/*
  
-www/myapp/node_modules/
+/www/myapp/node_modules/*
