@@ -1,9 +1,9 @@
 FROM node:latest
 
 
-RUN mkdir -p /home/myapp
+RUN mkdir -p /home/nodejsapp
 
-WORKDIR /home/myapp
+WORKDIR /home/nodejsapp
 RUN  npm install pm2 -g --no-optional\
      && npm install 
 
