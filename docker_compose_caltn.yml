@@ -20,7 +20,7 @@ services:
     depends_on:
       - php72
       - php56
-      - nodejs
+      - nodejsapp
   
   php72:
     build: 
@@ -76,11 +76,10 @@ services:
     networks:
       - mynetwork
   
-  nodejs:
-    build: ./nodejs/
-    #   - "3000:3000"
+  nodejsapp:
+    build: ./app_basic/nodejsapp/
     volumes:
-      - ./www/myapp:/home/myapp:rw
+      - ./www/nodejsapp:/home/nodejsapp:rw
     networks:
       - mynetwork
       
