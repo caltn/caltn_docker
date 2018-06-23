@@ -15,4 +15,4 @@
 /log/php-fpm/php72/*
 !/log/php-fpm/php72/.gitkeep
  
-/www/myapp/node_modules
+node_modules
