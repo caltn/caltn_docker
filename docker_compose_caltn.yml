@@ -68,9 +68,9 @@ services:
     image: mydev/mysql:latest
     container_name: "mydev_mysql"
     volumes:
-      - ./conf/mysql/my.cnf:/etc/mysql/my.cnf:ro
-      - ./mysql/:/var/lib/mysql/:rw
-      - ./log/mysql/:/var/log/mysql/:rw
+      - ./mysql/config/my.cnf:/etc/mysql/my.cnf:ro
+      - ./mysql/data:/var/lib/mysql:rw
+      - ./log/mysql:/var/log/mysql:rw
     environment:
       MYSQL_ROOT_PASSWORD: "123456"
     ports:

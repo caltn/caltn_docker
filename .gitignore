@@ -1,7 +1,7 @@
 /.history
 
-/mysql/*
-!/mysql/.gitkeep
+/mysql/data/*
+!/mysql/data/.gitkeep
 
 /postgres/*
 !/postgres/.gitkeep
