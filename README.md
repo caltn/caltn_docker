@@ -25,7 +25,7 @@ Docker deploying Nginx MySQL PHP7 in one key, support full feature functions.
     ```
 4. Start docker containers:
     ```
-    $ docker-compose -f docker_compose_caltn.yml up -d --build
+    $ docker-compose -f docker_compose_caltn.yml up -d --build --force-recreate
     ```
     You may need use `sudo` before this command in Linux.
 5. Go to your browser and type `http://127.0.0.1`, you will see php72:
