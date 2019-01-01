@@ -3,10 +3,8 @@ services:
   nginx:
     build: ./nginx/
     ports:
-      # - "443:443"
-      - "80:80"  # site1
-      - "81:81" # site2
-      - "82:82" # nodejs
+      - "443:443"
+      - "80:80"
     networks:
       - mynetwork
 
