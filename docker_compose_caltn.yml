@@ -2,12 +2,8 @@ version: '3'
 services:
   nginx:
     build: ./nginx/
-    ports:
-      - "443:443"
-      - "80:80"
-    networks:
-      - mynetwork
-
+    image: mydev/nginx:latest
+    container_name: "mydev_nginx"
     # volumes:
     #   - ./www/:/var/www/html/:rw
     #   - ./conf/nginx/conf.d:/etc/nginx/conf.d/:ro
@@ -18,6 +14,9 @@ services:
       - ./conf/nginx_dev/conf.d:/etc/nginx/conf.d/:ro
       - ./conf/nginx_dev/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./log/nginx_dev/:/var/log/nginx/:rw
+    ports:
+      - "443:443"
+      - "80:80"
     networks:
       - mynetwork
     depends_on:
@@ -30,13 +29,15 @@ services:
     build: 
       context: ./php/
       dockerfile: ./php72/Dockerfile
-    expose:
-      - "9000"
+    image: mydev/php72:latest
+    container_name: "mydev_php72"
     volumes:
       - ./www/:/var/www/html/:rw
       - ./conf/php/php72/php.ini:/usr/local/etc/php/php.ini:ro
       - ./conf/php/php72/php-fpm.d/www.conf:/usr/local/etc/php-fpm.d/www.conf:rw
       - ./log/php-fpm/php72/:/var/log/php-fpm/:rw
+    expose:
+      - "9000"
     networks:
       - mynetwork
     depends_on:
@@ -47,13 +48,15 @@ services:
     build: 
       context: ./php/
       dockerfile: ./php56/Dockerfile
-    expose:
-      - "9000"
+    image: mydev/php56:latest
+    container_name: "mydev_php56"
     volumes:
       - ./www/:/var/www/html/:rw
       - ./conf/php/php56/php.ini:/usr/local/etc/php/php.ini:ro
       - ./conf/php/php56/php-fpm.d/www.conf:/usr/local/etc/php-fpm.d/www.conf:rw
       - ./log/php-fpm/php56/:/var/log/php-fpm/:rw
+    expose:
+      - "9000"
     networks:
       - mynetwork
     depends_on:
@@ -61,21 +64,24 @@ services:
       - redis
   
   mysql:
-    image: mysql:5.7.22
-    ports:
-      - "3306:3306"
+    build: ./mysql/
+    image: mydev/mysql:latest
+    container_name: "mydev_mysql"
     volumes:
       - ./conf/mysql/my.cnf:/etc/mysql/my.cnf:ro
       - ./mysql/:/var/lib/mysql/:rw
       - ./log/mysql/:/var/log/mysql/:rw
     environment:
       MYSQL_ROOT_PASSWORD: "123456"
+    ports:
+      - "3306:3306"
     networks:
       - mynetwork
   
   redis:
-    image: redis:latest
-    container_name: "dev_redis"
+    build: ./redis/
+    image: mydev/redis:latest
+    container_name: "mydev_redis"
     ports:
       - "6379:6379"
     networks:
@@ -83,18 +89,24 @@ services:
 
   nodejsapp:
     build: ./app_basic/nodejsapp/
-    container_name: "nodejsappa"
+    image: mydev/nodejsapp:latest
+    container_name: "mydev_nodejsapp"
     volumes:
       - ./www/nodejsapp:/home/nodejsapp:rw
+    expose:
+      - "3000"
     networks:
       - mynetwork
   
   gitlab:
     build: ./gitlab/
-    # image: 'gitlab/gitlab-ce:latest'
+    image: 'mydev/gitlab:latest'
+    container_name: "mydev_gitlab"
     restart: always
-    ports:
-        - "10022:22"
+    volumes:
+      - './gitlab/config:/etc/gitlab'
+      - './gitlab/logs:/var/log/gitlab'
+      - './gitlab/data:/var/opt/gitlab'
     # hostname: 'gitlab.mydev.com'
     environment:
       GITLAB_OMNIBUS_CONFIG: |
@@ -119,10 +131,8 @@ services:
       - '22'
       - '80'
       - '443'
-    volumes:
-      - './gitlab/config:/etc/gitlab'
-      - './gitlab/logs:/var/log/gitlab'
-      - './gitlab/data:/var/opt/gitlab'
+    ports:
+      - "10022:22"
     depends_on:
       - postgres
       - redis
@@ -130,16 +140,16 @@ services:
       - mynetwork
 
   postgres:
-    restart: always
-    # image: local/postgres:test
+    image: mydev/postgres:latest
     build: ./postgres/
-    container_name: "dev_postgres"
-    ports:
-      - "5432:5432"
-    environment:
-        - POSTGRES_PASSWORD=123456
+    container_name: "mydev_postgres"
+    restart: always
     volumes:
         - ./postgres:/var/lib/postgresql/data
+    environment:
+        - POSTGRES_PASSWORD=123456
+    ports:
+      - "5432:5432"
     networks:
       - mynetwork
       
