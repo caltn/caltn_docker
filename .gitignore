@@ -3,8 +3,8 @@
 /mysql/data/*
 !/mysql/data/.gitkeep
 
-/postgres/*
-!/postgres/.gitkeep
+/postgres/data/*
+!/postgres/data/.gitkeep
 
 /log/mysql/*
 !/log/mysql/.gitkeep
