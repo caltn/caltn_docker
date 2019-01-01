@@ -3,12 +3,19 @@
 /mysql/*
 !/mysql/.gitkeep
 
+/postgres/*
+!/postgres/.gitkeep
+
 /log/mysql/*
 !/log/mysql/.gitkeep
  
 /log/nginx/wwwlog/*
 !/log/nginx/wwwlog/.gitkeep
 /log/nginx/*.log
+
+/log/nginx_dev/wwwlog/*
+!/log/nginx_dev/wwwlog/.gitkeep
+/log/nginx_dev/*.log
  
 /log/php-fpm/php56/*
 !/log/php-fpm/php56/.gitkeep
@@ -16,3 +23,5 @@
 !/log/php-fpm/php72/.gitkeep
  
 node_modules
+
+gitlab
