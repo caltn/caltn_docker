@@ -6,17 +6,13 @@
 /mysql/log/*
 !/mysql/log/.gitkeep
 
+/nginx/logs/*.log
+/nginx/logs/wwwlog/*
+!/nginx/logs/wwwlog/.gitkeep
+
 /postgres/data/*
 !/postgres/data/.gitkeep
- 
-/log/nginx/wwwlog/*
-!/log/nginx/wwwlog/.gitkeep
-/log/nginx/*.log
 
-/log/nginx_dev/wwwlog/*
-!/log/nginx_dev/wwwlog/.gitkeep
-/log/nginx_dev/*.log
- 
 /log/php-fpm/php56/*
 !/log/php-fpm/php56/.gitkeep
 /log/php-fpm/php72/*

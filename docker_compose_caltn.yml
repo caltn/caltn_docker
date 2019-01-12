@@ -8,12 +8,12 @@ services:
     #   - ./www:/var/www/html:rw
     #   - ./nginx/prod/conf.d:/etc/nginx/conf.d:ro
     #   - ./nginx/prod/nginx.conf:/etc/nginx/nginx.conf:ro
-    #   - ./log/nginx:/var/log/nginx:rw
+    #   - ./nginx/logs:/var/log/nginx:rw
     volumes:
       - ./www:/var/www/html:rw
       - ./nginx/dev/conf.d:/etc/nginx/conf.d:ro
       - ./nginx/dev/nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./log/nginx_dev:/var/log/nginx:rw
+      - ./nginx/logs:/var/log/nginx:rw
     ports:
       - "443:443"
       - "80:80"
