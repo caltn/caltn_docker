@@ -2,17 +2,12 @@ version: '3'
 services:
   nginx:
     build: ./nginx/
-    image: mydev/nginx:latest
-    container_name: "mydev_nginx"
-    # volumes:
-    #   - ./www:/var/www/html:rw
-    #   - ./nginx/prod/conf.d:/etc/nginx/conf.d:ro
-    #   - ./nginx/prod/nginx.conf:/etc/nginx/nginx.conf:ro
-    #   - ./nginx/logs:/var/log/nginx:rw
+    image: ${GLOBAL_PROJECT_NAME}/nginx:latest
+    container_name: "${GLOBAL_PROJECT_NAME}_nginx"
     volumes:
       - ./www:/var/www/html:rw
-      - ./nginx/dev/conf.d:/etc/nginx/conf.d:ro
-      - ./nginx/dev/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/${GLOBAL_NGINX_ENV}/conf.d:/etc/nginx/conf.d:ro
+      - ./nginx/${GLOBAL_NGINX_ENV}/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./nginx/logs:/var/log/nginx:rw
     ports:
       - "443:443"
@@ -29,8 +24,8 @@ services:
     build: 
       context: ./php/
       dockerfile: ./php72/Dockerfile
-    image: mydev/php72:latest
-    container_name: "mydev_php72"
+    image: ${GLOBAL_PROJECT_NAME}/php72:latest
+    container_name: "${GLOBAL_PROJECT_NAME}_php72"
     volumes:
       - ./www:/var/www/html:rw
       - ./php/php72/config/php.ini:/usr/local/etc/php/php.ini:ro
@@ -48,8 +43,8 @@ services:
     build: 
       context: ./php/
       dockerfile: ./php56/Dockerfile
-    image: mydev/php56:latest
-    container_name: "mydev_php56"
+    image: ${GLOBAL_PROJECT_NAME}/php56:latest
+    container_name: "${GLOBAL_PROJECT_NAME}_php56"
     volumes:
       - ./www:/var/www/html:rw
       - ./php/php56/config/php.ini:/usr/local/etc/php/php.ini:ro
@@ -65,8 +60,8 @@ services:
   
   mysql:
     build: ./mysql/
-    image: mydev/mysql:latest
-    container_name: "mydev_mysql"
+    image: ${GLOBAL_PROJECT_NAME}/mysql:latest
+    container_name: "${GLOBAL_PROJECT_NAME}_mysql"
     volumes:
       - ./mysql/config/my.cnf:/etc/mysql/my.cnf:ro
       - ./mysql/data:/var/lib/mysql:rw
@@ -80,8 +75,8 @@ services:
   
   redis:
     build: ./redis/
-    image: mydev/redis:latest
-    container_name: "mydev_redis"
+    image: ${GLOBAL_PROJECT_NAME}/redis:latest
+    container_name: "${GLOBAL_PROJECT_NAME}_redis"
     ports:
       - "6379:6379"
     networks:
@@ -89,8 +84,8 @@ services:
 
   nodejsapp:
     build: ./app_basic/nodejsapp/
-    image: mydev/nodejsapp:latest
-    container_name: "mydev_nodejsapp"
+    image: ${GLOBAL_PROJECT_NAME}/nodejsapp:latest
+    container_name: "${GLOBAL_PROJECT_NAME}_nodejsapp"
     volumes:
       - ./www/nodejsapp:/home/nodejsapp:rw
     expose:
@@ -100,8 +95,8 @@ services:
   
   gitlab:
     build: ./gitlab/
-    image: 'mydev/gitlab:latest'
-    container_name: "mydev_gitlab"
+    image: '${GLOBAL_PROJECT_NAME}/gitlab:latest'
+    container_name: "${GLOBAL_PROJECT_NAME}_gitlab"
     restart: always
     volumes:
       - './gitlab/config:/etc/gitlab'
@@ -140,9 +135,9 @@ services:
       - mynetwork
 
   postgres:
-    image: mydev/postgres:latest
+    image: ${GLOBAL_PROJECT_NAME}/postgres:latest
     build: ./postgres/
-    container_name: "mydev_postgres"
+    container_name: "${GLOBAL_PROJECT_NAME}_postgres"
     restart: always
     volumes:
         - ./postgres/data:/var/lib/postgresql/data
