@@ -1,13 +1,13 @@
-/.history
+.history
+.vscode
 
 /mysql/data/*
 !/mysql/data/.gitkeep
+/mysql/log/*
+!/mysql/log/.gitkeep
 
 /postgres/data/*
 !/postgres/data/.gitkeep
-
-/log/mysql/*
-!/log/mysql/.gitkeep
  
 /log/nginx/wwwlog/*
 !/log/nginx/wwwlog/.gitkeep
