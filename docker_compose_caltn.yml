@@ -35,7 +35,7 @@ services:
       - ./www:/var/www/html:rw
       - ./php/php72/config/php.ini:/usr/local/etc/php/php.ini:ro
       - ./php/php72/config/php-fpm.d/www.conf:/usr/local/etc/php-fpm.d/www.conf:rw
-      - ./log/php-fpm/php72:/var/log/php-fpm:rw
+      - ./php/php72/log:/var/log/php-fpm:rw
     expose:
       - "9000"
     networks:
@@ -54,7 +54,7 @@ services:
       - ./www:/var/www/html:rw
       - ./php/php56/config/php.ini:/usr/local/etc/php/php.ini:ro
       - ./php/php56/config/php-fpm.d/www.conf:/usr/local/etc/php-fpm.d/www.conf:rw
-      - ./log/php-fpm/php56:/var/log/php-fpm:rw
+      - ./php/php56/log:/var/log/php-fpm:rw
     expose:
       - "9000"
     networks:

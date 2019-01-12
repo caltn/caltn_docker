@@ -10,13 +10,14 @@
 /nginx/logs/wwwlog/*
 !/nginx/logs/wwwlog/.gitkeep
 
+/php/php72/log/*
+!/php/php72/log/.gitkeep
+
+/php/php56/log/*
+!/php/php56/log/.gitkeep
+
 /postgres/data/*
 !/postgres/data/.gitkeep
-
-/log/php-fpm/php56/*
-!/log/php-fpm/php56/.gitkeep
-/log/php-fpm/php72/*
-!/log/php-fpm/php72/.gitkeep
  
 node_modules
 
