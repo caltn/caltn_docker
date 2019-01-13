@@ -60,7 +60,7 @@ Docker deploying Nginx MySQL PHP Gitlab Postgres in one key.
     The project files is located in `./www/`.
 
 ### HTTPS and HTTP/2
-Default demo include 3 sites:
+Default demos:
 * http://site1.mydev.com
 * http://site2.mydev.com
 * http://nodejs.mydev.com
