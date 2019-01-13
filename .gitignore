@@ -6,9 +6,7 @@
 /mysql/log/*
 !/mysql/log/.gitkeep
 
-/nginx/logs/*.log
-/nginx/logs/wwwlog/*
-!/nginx/logs/wwwlog/.gitkeep
+/nginx/logs/**/*.log
 
 /php/php72/log/*
 !/php/php72/log/.gitkeep
@@ -18,7 +16,9 @@
 
 /postgres/data/*
 !/postgres/data/.gitkeep
- 
-node_modules
 
-gitlab
+/gitlab/*
+!/gitlab/.gitkeep
+ 
+/www/**/node_modules
+
