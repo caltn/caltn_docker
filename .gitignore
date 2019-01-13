@@ -20,5 +20,5 @@
 /gitlab/*
 !/gitlab/.gitkeep
  
-/www/**/node_modules
+# /www/**/node_modules
 
