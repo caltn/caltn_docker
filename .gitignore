@@ -1,6 +1,8 @@
 .history
 .vscode
 
+.env
+
 /mysql/data/*
 !/mysql/data/.gitkeep
 /mysql/log/*
