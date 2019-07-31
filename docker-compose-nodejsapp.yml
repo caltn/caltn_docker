@@ -1,0 +1,16 @@
+version: '3'
+services:
+  nginx:
+    depends_on:
+      - nodejsapp
+
+  nodejsapp:
+    build: ./app_basic/nodejsapp/
+    image: ${GLOBAL_PROJECT_NAME}/nodejsapp:latest
+    container_name: "${GLOBAL_PROJECT_NAME}_nodejsapp"
+    volumes:
+      - ./www/nodejsapp:/home/nodejsapp:rw
+    expose:
+      - "3000"
+    networks:
+      - mynetwork
