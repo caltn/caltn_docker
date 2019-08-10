@@ -13,4 +13,4 @@ services:
     expose:
       - "3000"
     networks:
-      - mynetwork
+      - ec_network
