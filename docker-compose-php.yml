@@ -27,7 +27,7 @@ services:
     expose:
       - "9000"
     networks:
-      - mynetwork
+      - ec_network
     depends_on:
       - mysql
       - redis
@@ -54,7 +54,7 @@ services:
     expose:
       - "9000"
     networks:
-      - mynetwork
+      - ec_network
     depends_on:
       - mysql
       - redis

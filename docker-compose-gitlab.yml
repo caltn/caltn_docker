@@ -43,4 +43,4 @@ services:
       - postgres
       - redis
     networks:
-      - mynetwork
+      - ec_network
