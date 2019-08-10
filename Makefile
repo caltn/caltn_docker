@@ -27,36 +27,28 @@ to_prod:
 
 
 .PHONY: dev_start
-dev_start: stop
-dev_start: to_dev
-dev_start: 
+dev_start: stop to_dev
 	docker-compose \
 		$(DOCKER_COMPOSE_FILES) \
 		start
 
 
 .PHONY: prod_start
-prod_start: stop
-prod_start: to_prod
-prod_start: 
+prod_start: stop to_prod
 	docker-compose \
 		$(DOCKER_COMPOSE_FILES) \
 		start
 
 
 .PHONY: dev_restart
-dev_restart: stop
-dev_restart: to_dev
-dev_restart: 
+dev_restart: stop to_dev
 	docker-compose \
 		$(DOCKER_COMPOSE_FILES) \
 		restart
 
 
 .PHONY: prod_restart
-prod_restart: stop
-prod_restart: to_prod
-prod_restart: 
+prod_restart: stop to_prod
 	docker-compose \
 		$(DOCKER_COMPOSE_FILES) \
 		restart
@@ -75,9 +67,9 @@ container_list:
 
 
 .PHONY: dev
-dev: stop
-dev: to_dev
-dev:
+dev: stop to_dev
+	echo ----------
+	echo $(ARG1)
 	docker-compose \
 		$(DOCKER_COMPOSE_FILES) \
 		up \
@@ -87,9 +79,7 @@ dev:
 
 
 .PHONY: prod
-prod: stop
-prod: to_prod
-prod:
+prod: stop to_prod
 	docker-compose \
 		$(DOCKER_COMPOSE_FILES) \
 		up \
