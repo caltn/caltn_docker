@@ -1,0 +1,109 @@
+site1.mydev.com {
+
+    root /var/www/html/site1
+
+    fastcgi / php72:9000 php {
+        index index.php
+    }
+
+    #rewrite {
+       # to {path} {path}/ /index.php?{query}
+    #}
+
+    tls off
+
+    log /var/log/caddy/site1.access.log
+    errors /var/log/caddy/site1.error.log
+
+    gzip
+}
+
+http://site2.mydev.com:2015 {
+    tls off
+    redir https://site2.mydev.com{uri}
+}
+
+
+https://site2.mydev.com {
+
+    root /var/www/html/site2
+
+    fastcgi / php56:9000 php {
+        index index.php
+    }
+
+    #rewrite {
+        #to {path} {path}/ /index.php?{query}
+    #}
+
+    tls /etc/ssl/caddy/*.mydev.com.crt  /etc/ssl/caddy/*.mydev.com.key
+
+    log /var/log/caddy/site2.access.log
+    errors /var/log/caddy/site2.error.log
+
+    gzip
+}
+
+http://nodejs.mydev.com:2015 {
+    tls off
+    redir https://nodejs.mydev.com{uri}
+}
+
+https://nodejs.mydev.com {
+
+    proxy / nodejsapp:3000 {
+        transparent
+    }
+
+    header / {
+        # 启用跨站点过滤器(XSS)并告诉浏览器阻止检测到的攻击
+        X-XSS-Protection "1; mode=block"
+        # 防止某些浏览器通过声明的"Content-type"对响应使用"MIME-sniffing"
+        X-Content-Type-Options "nosniff"
+        # 不允许网站在框架内渲染(点击劫持保护)
+        X-Frame-Options "DENY"
+    }
+
+    expires {
+        match .js$ -1s
+        match .css$ -1s
+        match .png$ -1s
+        match .jpg$ -1s
+        match .jpeg$ -1s
+        match .bmp$ -1s
+        match .swf$ -1s
+        match .ico$ -1s
+        match .txt$ -1s
+        match .html$ -1s
+    }
+
+    tls /etc/ssl/caddy/*.mydev.com.crt  /etc/ssl/caddy/*.mydev.com.key
+
+    log /var/log/caddy/nodejsapp.access.log
+    errors /var/log/caddy/nodejsapp.error.log
+
+    gzip
+}
+
+
+http://gitlab.mydev.com:2015 {
+    proxy / gitlab:80 {
+        transparent
+    }
+
+    header / {
+        # 启用跨站点过滤器(XSS)并告诉浏览器阻止检测到的攻击
+        X-XSS-Protection "1; mode=block"
+        # 防止某些浏览器通过声明的"Content-type"对响应使用"MIME-sniffing"
+        X-Content-Type-Options "nosniff"
+        # 不允许网站在框架内渲染(点击劫持保护)
+        X-Frame-Options "DENY"
+    }
+
+    tls off
+
+    log /var/log/caddy/gitlab.access.log
+    errors /var/log/caddy/gitlab.error.log
+
+    gzip
+}

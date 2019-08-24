@@ -1,9 +1,5 @@
 version: '3'
 services:
-  nginx:
-    depends_on:
-      - gitlab
-
   gitlab:
     build: ./gitlab/
     image: '${GLOBAL_PROJECT_NAME}/gitlab:latest'

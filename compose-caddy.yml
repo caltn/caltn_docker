@@ -1,0 +1,23 @@
+version: '3'
+services:
+  caddy:
+    build: 
+      context: ./caddy/
+      dockerfile: ./Dockerfile
+      args:
+        CURRENT_GLOBAL_ENV: ${GLOBAL_ENV}
+    image: ${GLOBAL_PROJECT_NAME}/caddy:latest
+    container_name: "${GLOBAL_PROJECT_NAME}_caddy"
+    volumes:
+      - ./www:/var/www/html:rw
+      - ./caddy/${GLOBAL_ENV}/Caddyfile:/etc/Caddyfile:ro
+      - ./caddy/${GLOBAL_ENV}/.caddy:/root/.caddy:rw
+      - ./caddy/log:/var/log/caddy:rw
+      - ./certs:/etc/ssl/caddy:rw
+    ports:
+      - "443:443"
+      - "80:2015"
+    networks:
+      - ec_network
+
+

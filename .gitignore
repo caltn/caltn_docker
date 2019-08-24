@@ -2,6 +2,7 @@
 .vscode
 
 .env
+export-compose.yml
 
 /mysql/data/*
 !/mysql/data/.gitkeep
@@ -23,6 +24,9 @@
 !/gitlab/data/.gitkeep
 /gitlab/logs/*
 !/gitlab/logs/.gitkeep
+
+/caddy/log/*
+!/caddy/log/.gitkeep
  
 /www/**/node_modules
 
