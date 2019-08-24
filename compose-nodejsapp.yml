@@ -1,9 +1,5 @@
 version: '3'
 services:
-  nginx:
-    depends_on:
-      - nodejsapp
-
   nodejsapp:
     build: ./app_basic/nodejsapp/
     image: ${GLOBAL_PROJECT_NAME}/nodejsapp:latest
