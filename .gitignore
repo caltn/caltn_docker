@@ -1,6 +1,9 @@
 .history
 .vscode
 
+.env
+export-compose.yml
+
 /mysql/data/*
 !/mysql/data/.gitkeep
 /mysql/log/*
@@ -21,6 +24,9 @@
 !/gitlab/data/.gitkeep
 /gitlab/logs/*
 !/gitlab/logs/.gitkeep
+
+/caddy/log/*
+!/caddy/log/.gitkeep
  
 /www/**/node_modules
 

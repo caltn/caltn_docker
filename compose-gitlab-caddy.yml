@@ -1,0 +1,5 @@
+version: '3'
+services:
+  caddy:
+    depends_on:
+      - gitlab

@@ -1,4 +1,1 @@
-*.js 		linguist-language=shell
-*.css 		linguist-language=shell
-*.html 		linguist-language=shell
-*.php 		linguist-language=shell
+* 		linguist-language=docker

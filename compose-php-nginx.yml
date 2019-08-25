@@ -1,0 +1,6 @@
+version: '3'
+services:
+  nginx:
+    depends_on:
+      - php72
+      - php56

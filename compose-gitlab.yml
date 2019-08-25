@@ -1,0 +1,42 @@
+version: '3'
+services:
+  gitlab:
+    build: ./gitlab/
+    image: '${GLOBAL_PROJECT_NAME}/gitlab:latest'
+    container_name: "${GLOBAL_PROJECT_NAME}_gitlab"
+    restart: always
+    volumes:
+      - './gitlab/config:/etc/gitlab'
+      - './gitlab/logs:/var/log/gitlab'
+      - './gitlab/data:/var/opt/gitlab'
+    # hostname: 'gitlab.mydev.com'
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url '${GITLAB_URL}'
+        gitlab_rails['gitlab_shell_ssh_port'] = 10022
+        postgresql['enable'] = false
+        gitlab_rails['db_adapter'] = 'postgresql'
+        gitlab_rails['db_encoding'] = 'utf8'
+        gitlab_rails['db_host'] = 'postgres'
+        gitlab_rails['db_port'] = '5432'
+        gitlab_rails['db_username'] = 'postgres'
+        gitlab_rails['db_password'] = '123456'
+        redis['enable'] = false
+        gitlab_rails['redis_host'] = 'redis'
+        gitlab_rails['redis_port'] = 6379
+        gitlab_workhorse['auth_backend'] = "http://localhost:8080"
+        unicorn['port'] = 8080
+        gitlab_rails['webhook_timeout'] = 90 
+        gitlab_rails['git_timeout']=90
+        unicorn['socket'] = '/opt/gitlab/var/unicorn/gitlab.socket'
+    expose:
+      - '22'
+      - '80'
+      - '443'
+    ports:
+      - "10022:22"
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - ec_network

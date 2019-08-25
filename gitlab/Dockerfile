@@ -1,1 +1,1 @@
-FROM gitlab/gitlab-ce:latest
+FROM gitlab/gitlab-ce:12.0.0-ce.0

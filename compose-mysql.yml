@@ -1,0 +1,16 @@
+version: '3'
+services:
+  mysql:
+    build: ./mysql/
+    image: ${GLOBAL_PROJECT_NAME}/mysql:latest
+    container_name: "${GLOBAL_PROJECT_NAME}_mysql"
+    volumes:
+      - ./mysql/config/my.cnf:/etc/mysql/my.cnf:ro
+      - ./mysql/data:/var/lib/mysql:rw
+      - ./mysql/log:/var/log/mysql:rw
+    environment:
+      MYSQL_ROOT_PASSWORD: "123456"
+    ports:
+      - "3306:3306"
+    networks:
+      - ec_network

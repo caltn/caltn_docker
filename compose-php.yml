@@ -1,0 +1,55 @@
+version: '3'
+services:
+  php72:
+    build: 
+      context: ./php/
+      dockerfile: ./Dockerfile
+      args:
+        PHP_VERSION: ${PHP72_VERSION}
+        ALPINE_REPOSITORIES: ${ALPINE_REPOSITORIES}
+        PHP_EXTENSIONS: ${PHP72_EXTENSIONS}
+        MORE_EXTENSION_INSTALLER: php72.sh
+        TZ: "$TZ"
+    image: ${GLOBAL_PROJECT_NAME}/php72:latest
+    container_name: "${GLOBAL_PROJECT_NAME}_php72"
+    volumes:
+      - ./www:/var/www/html:rw
+      - ./php/php72/config/php.ini:/usr/local/etc/php/php.ini:ro
+      - ./php/php72/config/php-fpm.d/www.conf:/usr/local/etc/php-fpm.d/www.conf:rw
+      - ./php/php72/log:/var/log/php-fpm:rw
+    cap_add:
+      - SYS_PTRACE
+    expose:
+      - "9000"
+    networks:
+      - ec_network
+    depends_on:
+      - mysql
+      - redis
+  
+  php56:
+    build: 
+      context: ./php/
+      dockerfile: ./Dockerfile
+      args:
+        PHP_VERSION: ${PHP56_VERSION}
+        ALPINE_REPOSITORIES: ${ALPINE_REPOSITORIES}
+        PHP_EXTENSIONS: ${PHP56_EXTENSIONS}
+        MORE_EXTENSION_INSTALLER: php56.sh
+        TZ: "$TZ"
+    image: ${GLOBAL_PROJECT_NAME}/php56:latest
+    container_name: "${GLOBAL_PROJECT_NAME}_php56"
+    volumes:
+      - ./www:/var/www/html:rw
+      - ./php/php56/config/php.ini:/usr/local/etc/php/php.ini:ro
+      - ./php/php56/config/php-fpm.d/www.conf:/usr/local/etc/php-fpm.d/www.conf:rw
+      - ./php/php56/log:/var/log/php-fpm:rw
+    cap_add:
+      - SYS_PTRACE
+    expose:
+      - "9000"
+    networks:
+      - ec_network
+    depends_on:
+      - mysql
+      - redis

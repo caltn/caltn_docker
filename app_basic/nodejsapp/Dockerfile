@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:8.16.0
 
 
 RUN mkdir -p /home/nodejsapp
