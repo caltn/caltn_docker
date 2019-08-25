@@ -1,20 +1,21 @@
-# caltn_docker
+# ec_docker
 
-Notice: Refer to other people's original version and modify to the version I need
-Docker deploying Nginx MySQL PHP Gitlab Postgres in one key.
+Notice: Refer to other people's original version and modify to the version I needed.
+Docker deploying Caddy Nginx MySQL PHP Gitlab Postgres
 
 ### Feature
-1. Completely open source.
-2. Support Multiple PHP version(PHP5.4, PHP5.6, PHP7.2) switch.
-3. Support Multiple domains.
-4. Support HTTPS and HTTP/2.
-5. PHP source located in host.
-6. MySQL/Postgres data directory in host.
-7. All conf files located in host.
-8. All log files located in host.
-9. Built-in PHP extensions install commands.
-10. Supported any OS with docker.
-11. Use docker env file named global project name and nginx dev or prod conf folder name
+1. Support Caddy, Nginx server switch.
+2. Support Multiple domains.
+3. Support HTTPS and HTTP/2.
+4. Supported any OS with docker.
+5. Support Multiple PHP version(PHP5.6, PHP7.2) switch.
+6. PHP source located in host.
+7. Built-in PHP extensions install commands.
+8. MySQL/Postgres data directory in host.
+9. All conf files located in host.
+10. All log files located in host.
+11. Use docker env file named global project name, nginx dev or prod config folder name and caddy config folder
+12. User `make` command to operate.
 
 
 
@@ -22,23 +23,23 @@ Docker deploying Nginx MySQL PHP Gitlab Postgres in one key.
 1. Install `git`, `docker` and `docker-compose`;
 2. Clone project:
     ```
-    $ git clone https://github.com/caltn/caltn_docker
+    $ git clone https://github.com/caltn/ec_docker
     ```
 4. Start docker containers:
     
     first:
     ```
-    $ docker-compose -f docker_compose_caltn.yml up -d --build
+    make export_config_caddy (or export_config_nginx)
     ```
 
     recreate：
     ```
-    $ docker-compose -f docker_compose_caltn.yml up -d --build --force-recreate
+    make dev_caddy (or dev_nginx)
     ```
 
-    common start/stop:
+    common stop/start/restart:
     ```
-    $ docker-compose -f docker_compose_caltn.yml start/stop
+    make stop (or start, restart)
     ```
     You may need use `sudo` before this command in Linux.
 5. To preview them, add 2 lines to your hosts file (at `/etc/hosts` on Linux and `C:\Windows\System32\drivers\etc\hosts` on Windows):
@@ -64,8 +65,8 @@ Docker deploying Nginx MySQL PHP Gitlab Postgres in one key.
 ### HTTPS and HTTP/2
 Default demos:
 * http://site1-local.mydev.com
-* http://site2-local.mydev.com
-* http://nodejs-local.mydev.com
+* http://site2-local.mydev.com (caddy server has https)
+* http://nodejs-local.mydev.com (caddy server has https)
 * http://gitlab-local.mydev.com
 
 ### Reference resources
