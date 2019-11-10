@@ -27,6 +27,11 @@ Docker deploying Caddy Nginx MySQL PHP Gitlab Postgres
     ```
     $ git clone https://github.com/caltn/ec_docker
     ```
+3. create https cert:
+    ```
+    use certs/gencert.sh
+    ```
+
 4. Start docker containers:
     
     first:
