@@ -3,21 +3,23 @@
 Notice: Refer to other people's original version and modify to the version I needed.
 Docker deploying Caddy Nginx MySQL PHP Gitlab Postgres
 
-### Feature
+### v3 Feature
 1. Support Caddy, Nginx server switch.
+2. Postgres data directory in host.
+3. Use docker env file named global project name, nginx dev or prod config folder name and caddy config folder
+4. User `make` command to operate.
+
+### v2 Feature
+1. Support Nginx server.
 2. Support Multiple domains.
 3. Support HTTPS and HTTP/2.
 4. Supported any OS with docker.
 5. Support Multiple PHP version(PHP5.6, PHP7.2) switch.
 6. PHP source located in host.
 7. Built-in PHP extensions install commands.
-8. MySQL/Postgres data directory in host.
+8. MySQL data directory in host.
 9. All conf files located in host.
 10. All log files located in host.
-11. Use docker env file named global project name, nginx dev or prod config folder name and caddy config folder
-12. User `make` command to operate.
-
-
 
 ### Usage
 1. Install `git`, `docker` and `docker-compose`;
