@@ -1,4 +1,4 @@
-site1.mydev.com {
+site1.visitor.fun {
 
     root /var/www/html/site1
 
@@ -18,13 +18,13 @@ site1.mydev.com {
     gzip
 }
 
-http://site2.mydev.com:2015 {
+http://site2.visitor.fun:2015 {
     tls off
-    redir https://site2.mydev.com{uri}
+    redir https://site2.visitor.fun{uri}
 }
 
 
-https://site2.mydev.com {
+https://site2.visitor.fun {
 
     root /var/www/html/site2
 
@@ -36,7 +36,7 @@ https://site2.mydev.com {
         #to {path} {path}/ /index.php?{query}
     #}
 
-    tls /etc/ssl/caddy/*.mydev.com.crt  /etc/ssl/caddy/*.mydev.com.key
+    tls /etc/ssl/caddy/*.visitor.fun.crt  /etc/ssl/caddy/*.visitor.fun.key
 
     log /var/log/caddy/site2.access.log
     errors /var/log/caddy/site2.error.log
@@ -44,12 +44,12 @@ https://site2.mydev.com {
     gzip
 }
 
-http://nodejs.mydev.com:2015 {
+http://nodejs.visitor.fun:2015 {
     tls off
-    redir https://nodejs.mydev.com{uri}
+    redir https://nodejs.visitor.fun{uri}
 }
 
-https://nodejs.mydev.com {
+https://nodejs.visitor.fun {
 
     proxy / nodejsapp:3000 {
         transparent
@@ -77,7 +77,7 @@ https://nodejs.mydev.com {
         match .html$ -1s
     }
 
-    tls /etc/ssl/caddy/*.mydev.com.crt  /etc/ssl/caddy/*.mydev.com.key
+    tls /etc/ssl/caddy/*.visitor.fun.crt  /etc/ssl/caddy/*.visitor.fun.key
 
     log /var/log/caddy/nodejsapp.access.log
     errors /var/log/caddy/nodejsapp.error.log
@@ -86,7 +86,7 @@ https://nodejs.mydev.com {
 }
 
 
-http://gitlab.mydev.com:2015 {
+http://gitlab.visitor.fun:2015 {
     proxy / gitlab:80 {
         transparent
     }

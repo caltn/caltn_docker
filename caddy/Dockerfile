@@ -3,8 +3,9 @@
 #
 FROM abiosoft/caddy:builder as builder
 
+RUN GO111MODULE=auto && GOPROXY="https://goproxy.io"
 
-ARG version="1.0.1"
+ARG version="1.0.3"
 ARG plugins="git,cors,realip,expires,cache,minify,cloudflare"
 ARG enable_telemetry="true"
 
@@ -20,8 +21,9 @@ RUN VERSION=${version} PLUGINS=${plugins} ENABLE_TELEMETRY=${enable_telemetry} /
 FROM alpine:3.10
 
 ARG CURRENT_GLOBAL_ENV
-ARG version="1.0.1"
+ARG version="1.0.3"
 LABEL caddy_version="$version"
+
 
 # Let's Encrypt Agreement
 ENV ACME_AGREE="true"
@@ -34,6 +36,7 @@ RUN apk add --no-cache \
     git \
     mailcap \
     openssh-client \
+    tar \
     tzdata
 
 # install caddy

@@ -44,19 +44,19 @@ Docker deploying Caddy Nginx MySQL PHP Gitlab Postgres
     You may need use `sudo` before this command in Linux.
 5. To preview them, add 2 lines to your hosts file (at `/etc/hosts` on Linux and `C:\Windows\System32\drivers\etc\hosts` on Windows):
     ```
-    127.0.0.1 site1-local.mydev.com
-    127.0.0.1 site2-local.mydev.com
-    127.0.0.1 nodejs-local.mydev.com
-    127.0.0.1 gitlab-local.mydev.com
+    127.0.0.1 site1-local.visitor.fun
+    127.0.0.1 site2-local.visitor.fun
+    127.0.0.1 nodejs-local.visitor.fun
+    127.0.0.1 gitlab-local.visitor.fun
     ```
     Then you can visit from browser.
-6. Go to your browser and type `http://site1-local.mydev.com`, you will see php72:
+6. Go to your browser and type `http://site1-local.visitor.fun`, you will see php72:
 ![Demo Image](./doc/site1.png)
-7. Go to your browser and type `http://site2-local.mydev.com`, you will see php56:
+7. Go to your browser and type `http://site2-local.visitor.fun`, you will see php56:
 ![Demo Image](./doc/site2.png)
-8. Go to your browser and type `http://nodejs-local.mydev.com`, you will see nodejs:
+8. Go to your browser and type `http://nodejs-local.visitor.fun`, you will see nodejs:
 ![Demo Image](./doc/nodejs.png)
-9. Go to your browser and type `http://gitlab-local.mydev.com`, you will see gitlab:
+9. Go to your browser and type `http://gitlab-local.visitor.fun`, you will see gitlab:
 ![Demo Image](./doc/gitlab.png)
 
 ### Projects
@@ -64,10 +64,10 @@ Docker deploying Caddy Nginx MySQL PHP Gitlab Postgres
 
 ### HTTPS and HTTP/2
 Default demos:
-* http://site1-local.mydev.com
-* http://site2-local.mydev.com (caddy server has https)
-* http://nodejs-local.mydev.com (caddy server has https)
-* http://gitlab-local.mydev.com
+* http://site1-local.visitor.fun
+* http://site2-local.visitor.fun (caddy server has https)
+* http://nodejs-local.visitor.fun (caddy server has https)
+* http://gitlab-local.visitor.fun
 
 ### Reference resources
 - [yeszao/dnmp](https://github.com/yeszao/dnmp)

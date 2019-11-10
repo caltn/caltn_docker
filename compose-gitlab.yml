@@ -9,7 +9,7 @@ services:
       - './gitlab/config:/etc/gitlab'
       - './gitlab/logs:/var/log/gitlab'
       - './gitlab/data:/var/opt/gitlab'
-    # hostname: 'gitlab.mydev.com'
+    # hostname: 'gitlab.visitor.fun'
     environment:
       GITLAB_OMNIBUS_CONFIG: |
         external_url '${GITLAB_URL}'
